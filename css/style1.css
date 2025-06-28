@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #c1fba4, #3edbd3);
+    color: #f1f5f9;
+}
+
+header {
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  align-items: center;
+  background: #23cc4b;
+  padding: 20px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.header-right a {
+  color: #ffffff;
+  background: #1e293b;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.header-right a:hover {
+   background: #c13c25;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 300px 300px;
+    gap: 20px;
+    padding: 30px;
+}
+
+/* Generic card style */
+.card {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card h2 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #2e3cff;
+}
+
+.card p {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
+    color: #22c55e;
+}
+
+.card a {
+    background: #334155;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #f1f5f9;
+    width: fit-content;
+    transition: background 0.2s;
+}
+
+.card a:hover {
+    background: linear-gradient(135deg, #00c897, #007965);
+}
+
+/* Layout specifics */
+.balance {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.budget {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background: url('../image/budget.jpg') center/cover no-repeat;
+}
+
+.report {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background: url('../image/report.jpg') center/cover no-repeat;
+}
+
+.export {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background: url('../image/download.jpg') center/cover no-repeat;
+}
+.income-edit-form {
+      display: none;
+      margin-top: 10px;
+    }
+.card.balance:hover .income-edit-form {
+      display: block;
+    }
+.card.balance:hover .edit-btn {
+      display: none;
+    }

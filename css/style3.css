@@ -1,0 +1,113 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #a8edc2, #f0fdd6);
+}
+
+header {
+    background-color: #23cc4b;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    font-size: 26px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+form h3 {
+    margin-top: 0;
+    color: #23cc4b;
+    font-size: 22px;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #23cc4b;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background-color: #1fb23f;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+table thead tr {
+    background-color: #23cc4b;
+    color: white;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #eef9f1;
+}
+
+nav {
+    text-align: center;
+    margin-top: 25px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #23cc4b;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #1fb23f;
+}
+
+a {
+    color: #23cc4b;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #23cc4b;
+}

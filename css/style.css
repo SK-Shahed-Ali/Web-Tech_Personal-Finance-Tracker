@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #c1fba4, #3edbd3);
+    background-size: 400% 400%;
+}
+
+#form_container {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    position: relative;
+}
+
+h1 {
+    font-size: 30px;
+    color: #007965; 
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 10px 12px 5px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #bbb;
+    background: transparent;
+    outline: none;
+}
+
+.form-group label {
+    position: absolute;
+    top: 12px;
+    left: 5px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+.form-group input:focus ~ label,
+.form-group input:valid ~ label {
+    top: -18px;
+    left: 5px;
+    font-size: 13px;
+    color: #007965; 
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #00c897, #007965);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #72c9ba, #3926cc);
+}
+
+span {
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+a {
+    color: #007965;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.bottom-links {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}

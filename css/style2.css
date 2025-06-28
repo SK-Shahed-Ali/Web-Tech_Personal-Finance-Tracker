@@ -1,0 +1,38 @@
+.start-wrapper {
+    height: 97vh;
+    background: url('../image/image.png') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+}
+.start-overlay {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-content {
+    text-align: center;
+    margin-top: 310px;
+    margin-right: 750px ;
+}
+
+.start-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #43cea2, #185a9d);
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 15px rgba(67, 206, 162, 0.4);
+}
+
+.start-button:hover {
+  background: linear-gradient(45deg, #36d1dc, #5b86e5);
+  transform: translateY(-2px);
+}
