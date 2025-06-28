@@ -1,7 +1,6 @@
 <?php
 require_once("../db.php");
 
-// Get income for a specific month
 function getIncomeForMonth($user_id, $month) {
     $conn = createCon();
     $sql = "SELECT SUM(amount) AS total_income
@@ -17,7 +16,6 @@ function getIncomeForMonth($user_id, $month) {
     return $total_income ?: 0;
 }
 
-// Get total expenses by category for a specific month
 function getExpensesByCategory($user_id, $month) {
     $conn = createCon();
     $sql = "SELECT category, SUM(goal_amount) AS total_category_expense

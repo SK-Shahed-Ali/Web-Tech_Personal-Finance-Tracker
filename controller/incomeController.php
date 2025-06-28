@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: ../view/home.php");
         exit;
     } else {
-        // Optional error handling
         $_SESSION["income_error"] = "Invalid income amount.";
         header("Location: ../view/home.php");
         exit;

@@ -4,7 +4,6 @@ if (!isset($_SESSION["user_id"])) {
     header("Location: ../view/login.php");
     exit;
 }
-
 require_once("../db.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["format"] === "csv") {
@@ -16,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["format"] === "csv") {
 
     $output = fopen("php://output", "w");
 
-    // Income
     fputcsv($output, ["Income Records"]);
     fputcsv($output, ["Month", "Amount"]);
 
@@ -28,9 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["format"] === "csv") {
     while ($row = mysqli_fetch_assoc($result)) {
         fputcsv($output, [$row["income_month"], $row["amount"]]);
     }
-    fputcsv($output, []); // Empty line
+    fputcsv($output, []); 
 
-    // Expenses
     fputcsv($output, ["Budget Goals / Expenses"]);
     fputcsv($output, ["Category", "Amount", "Month"]);
 

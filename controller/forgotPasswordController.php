@@ -2,7 +2,7 @@
 session_start();
 require __DIR__ . '/../vendor/autoload.php';
 require_once("../db.php");
-require '../vendor/autoload.php'; // PHPMailer autoload if you use Composer
+require '../vendor/autoload.php'; 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -29,11 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Generate secure token
     $token = bin2hex(random_bytes(32));
     $expires = date("Y-m-d H:i:s", strtotime("+15 minutes"));
 
-    // Insert or update token
     $sql = "INSERT INTO password_resets (email, token, expires_at)
             VALUES (?, ?, ?)
             ON DUPLICATE KEY UPDATE token=?, expires_at=?";
@@ -43,25 +41,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_close($stmt);
     closeCon($conn);
 
-    // Send email
     $resetLink = "http://localhost/webtech%20project/view/reset_password.php?token=$token";
 
     $mail = new PHPMailer(true);
     try {
-        //Server settings
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';  // Gmail SMTP
+        $mail->Host       = 'smtp.gmail.com'; 
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'mkbadhon500@gmail.com'; // your Gmail
-        $mail->Password   = 'mzaluhhirezlkfkx'; // your Gmail App Password
+        $mail->Username   = 'mkbadhon500@gmail.com'; 
+        $mail->Password   = 'mzaluhhirezlkfkx'; 
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
-        //Recipients
         $mail->setFrom('mkbadhon500@gmail.com', 'Personal Finance Tracker');
         $mail->addAddress($email);
 
-        // Content
         $mail->isHTML(true);
         $mail->Subject = 'Password Reset Request';
         $mail->Body    = "Click the link below to reset your password:<br><a href='$resetLink'>$resetLink</a>";

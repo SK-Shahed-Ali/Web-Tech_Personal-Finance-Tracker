@@ -9,7 +9,6 @@ if (!$token) {
     exit;
 }
 
-// Validate token
 $conn = createCon();
 $sql = "SELECT email, expires_at FROM password_resets WHERE token=?";
 $stmt = mysqli_prepare($conn, $sql);

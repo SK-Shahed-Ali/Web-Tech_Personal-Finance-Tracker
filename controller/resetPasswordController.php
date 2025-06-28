@@ -19,8 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../view/reset_password.php?token=$token");
         exit;
     }
-
-    // Validate token again
     $conn = createCon();
     $sql = "SELECT expires_at FROM password_resets WHERE token=? AND email=?";
     $stmt = mysqli_prepare($conn, $sql);
@@ -34,13 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Update password
     $sql = "UPDATE user SET pasword=? WHERE email=?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "ss", $password, $email);
     mysqli_stmt_execute($stmt);
 
-    // Clean up token
     $sql = "DELETE FROM password_resets WHERE email=?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $email);
