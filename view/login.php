@@ -18,9 +18,13 @@ session_start();
             passwordError.innerText = "";
 
             let isValid = true;
-
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
             if (email.trim() === "") {
                 emailError.innerText = "* Email is required!";
+                isValid = false;
+            }else if (!emailPattern.test(email)) {
+                emailError.innerText = "* Enter a valid email address!";
                 isValid = false;
             }
 
