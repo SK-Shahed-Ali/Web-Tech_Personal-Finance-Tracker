@@ -1,11 +1,13 @@
 <?php require_once("../auth.php"); ?>
 <?php
 require_once("../model/budgetModel.php");
-$budgets = getAllBudgets();
 
 $editingBudget = null;
+$user_id = $_SESSION["user_id"];
+$budgets = getAllBudgets($user_id);
+
 if (isset($_GET["edit_id"])) {
-    $editingBudget = getBudgetById($_GET["edit_id"]);
+    $editingBudget = getBudgetById($_GET["edit_id"], $user_id);
 }
 ?>
 

@@ -1,32 +1,57 @@
 <?php
 require_once("../db.php");
 
-function insertBudget($user_id, $category, $goal_amount, $goal_month) {
+function insertBudget($userId, $category, $goal_amount, $goal_month) {
     $conn = createCon();
-    $sql = "INSERT INTO budget_goals (user_id, category, goal_amount, goal_month)
-            VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO budget_goals (user_id, category, goal_amount, goal_month) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "isds", $user_id, $category, $goal_amount, $goal_month);
+    mysqli_stmt_bind_param($stmt, "isds", $userId, $category, $goal_amount, $goal_month);
     $status = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
     return $status;
 }
 
-
-function getAllBudgets() {
+function getAllBudgets($userId) {
     $conn = createCon();
-    $sql = "SELECT * FROM budget_goals ORDER BY goal_month DESC";
-    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM budget_goals WHERE user_id = ? ORDER BY goal_month DESC";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $budgets = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_stmt_close($stmt);
     mysqli_close($conn);
     return $budgets;
 }
-function getBudgetById($id) {
+
+function deleteBudget($id, $userId) {
     $conn = createCon();
-    $sql = "SELECT * FROM budget_goals WHERE id = ?";
+    $sql = "DELETE FROM budget_goals WHERE id = ? AND user_id = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_bind_param($stmt, "ii", $id, $userId);
+    $status = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    return $status;
+}
+
+function updateBudget($id, $userId, $category, $goal_amount, $goal_month) {
+    $conn = createCon();
+    $sql = "UPDATE budget_goals SET category = ?, goal_amount = ?, goal_month = ? WHERE id = ? AND user_id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "sdsii", $category, $goal_amount, $goal_month, $id, $userId);
+    $status = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    return $status;
+}
+
+function getBudgetById($id, $userId) {
+    $conn = createCon();
+    $sql = "SELECT * FROM budget_goals WHERE id = ? AND user_id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "ii", $id, $userId);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $budget = mysqli_fetch_assoc($result);
@@ -35,25 +60,4 @@ function getBudgetById($id) {
     return $budget;
 }
 
-function updateBudget($id, $category, $goal_amount, $goal_month) {
-    $conn = createCon();
-    $sql = "UPDATE budget_goals SET category=?, goal_amount=?, goal_month=? WHERE id=?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sdsi", $category, $goal_amount, $goal_month, $id);
-    $status = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
-    return $status;
-}
-
-function deleteBudget($id) {
-    $conn = createCon();
-    $sql = "DELETE FROM budget_goals WHERE id=?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $id);
-    $status = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
-    return $status;
-}
 ?>
