@@ -34,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
     } else {
-        // Insert new budget
         $category = trim($_POST["category"]);
         $goal_amount = trim($_POST["goal_amount"]);
         $goal_month = $_POST["goal_month"];
